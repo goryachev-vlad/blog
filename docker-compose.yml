@@ -1,0 +1,21 @@
+version: "3"
+services:
+  blog:
+    image: 912be0d14369
+    ports:
+      - "8080:8080"
+    networks:
+      - mariadb-nw
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    networks:
+      - mariadb-nw
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=myDB
+
+networks:
+  mariadb-nw:
